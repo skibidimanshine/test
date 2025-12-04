@@ -120,10 +120,10 @@ def player_turn(player, enemy):
         damage = enemy.basic_attack(player)
         player.defense -= 3
         print(f"{enemy.name} атакует, но ты в защите и получаешь всего {damage} урона.")
-        return  # ход врага уже прошёл в этом варианте
+        return  
     elif choice == "4":
         if random.random() < 0.5:
-            print("Тебе удалось сбежать! 🏃")
+            print("Тебе удалось сбежать!")
             return "escaped"
         else:
             print("Сбежать не удалось!")
@@ -142,8 +142,8 @@ def battle(player, enemy):
     print("===================================\n")
 
     while player.is_alive() and enemy.is_alive():
-        print(f"💚 Твоё HP: {player.hp}/{player.max_hp} | Зелий: {player.potions}")
-        print(f"💀 {enemy.name} HP: {enemy.hp}/{enemy.max_hp}")
+        print(f"Твоё HP: {player.hp}/{player.max_hp} | Зелий: {player.potions}")
+        print(f"{enemy.name} HP: {enemy.hp}/{enemy.max_hp}")
 
         result = player_turn(player, enemy)
         if result == "escaped":
@@ -153,12 +153,12 @@ def battle(player, enemy):
             print("\n☠ Ты пал в бою...")
             return "dead"
         if not enemy.is_alive():
-            print(f"\n✅ Ты победил {enemy.name}!")
+            print(f"\n Ты победил {enemy.name}!")
             player.gain_exp(enemy.exp_reward)
             # шанс получить зелье
             if random.random() < 0.3:
                 player.potions += 1
-                print("🎁 С противника выпало зелье лечения!")
+                print("С противника выпало зелье лечения!")
             return "win"
 
 
@@ -200,9 +200,9 @@ def main():
             break
 
         print("\nЧто будешь делать?")
-        print("1) 🚶 Идти дальше")
-        print("2) 📜 Посмотреть характеристики")
-        print("3) 🚪 Выйти из игры")
+        print("1) Идти дальше")
+        print("2) Посмотреть характеристики")
+        print("3) Выйти из игры")
         cmd = input("> ").strip()
 
         if cmd == "1":
@@ -221,7 +221,7 @@ def main():
             print(f"Зелья: {player.potions}")
             print("================================")
         elif cmd == "3":
-            print("Пока! 👋")
+            print("Пока!")
             sys.exit(0)
         else:
             print("Не понял команду, попробуй ещё раз.")
